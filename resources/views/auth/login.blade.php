@@ -52,7 +52,10 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4" >
+                                <a href="{!! url('auth/facebook') !!}" class="btn btn-primary">
+                                    <i class="fab fa-facebook" style="font-size: 15pt "></i>
+                                </a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -65,13 +68,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group ">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{!! url('auth/facebook') !!}" class="btn btn-primary btn-block">
-                                    {{ __('Login with facebook') }}
-                                </a>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
