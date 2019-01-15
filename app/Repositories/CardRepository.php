@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
-class CardRepository extends BaseRepository
+use App\Repositories\Interfaces\CardRepositoryInterface;
+
+class CardRepository extends BaseRepository implements CardRepositoryInterface
 {
 
 }

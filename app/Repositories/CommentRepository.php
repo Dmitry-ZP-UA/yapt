@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
-class CommentRepository extends BaseRepository
+use App\Repositories\Interfaces\CommentRepositoryInterface;
+
+class CommentRepository extends BaseRepository implements CommentRepositoryInterface
 {
 
 }

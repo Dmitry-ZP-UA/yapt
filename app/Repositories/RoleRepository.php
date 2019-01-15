@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
-class RoleRepository extends BaseRepository
+use App\Repositories\Interfaces\RoleRepositoryInterface;
+
+class RoleRepository extends BaseRepository implements RoleRepositoryInterface
 {
 
 }

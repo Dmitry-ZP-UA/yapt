@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
-class StatusRepository extends BaseRepository
+use App\Repositories\Interfaces\StatusRepositoryInterface;
+
+class StatusRepository extends BaseRepository implements StatusRepositoryInterface
 {
 
 }
