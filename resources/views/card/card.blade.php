@@ -1,12 +1,13 @@
-
-
-<div class="alert alert-primary" role="alert" data-target="#exampleModalLong" data-toggle="modal" style="cursor: pointer;">
-    Это основное уведомление с <a href="#" class="alert-link">примером ссылки</a>.
-</div>
+@foreach($cards as $card)
+    <div class="alert alert-primary" role="alert" data-target="{{'#openModal'.$card->id}}" data-toggle="modal"
+         style="cursor: pointer;">
+        {{ $card->title }}
+    </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="{{'openModal'.$card->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,9 +17,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                @foreach($card->tags as $tag)
+                    <span>{{ $tag->tag }}</span>
+                @endforeach
             </div>
 
         </div>
     </div>
 </div>
+
+@endforeach

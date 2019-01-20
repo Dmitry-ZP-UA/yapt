@@ -36,6 +36,7 @@ class CardController extends Controller
     public function create(CreateCardRequest $request)
     {
         $this->cardRepository->create($request->only('title', 'description', 'assigned_to'));
+
         $this->tagRepository->createTags($request->only('tags'),
             $this->cardRepository->getLastId());
     }
@@ -52,6 +53,8 @@ class CardController extends Controller
 
     public function show()
     {
+        $cards = $this->cardRepository->getCardsWithTags();
 
+        return view('home', ['cards' => $cards]);
     }
 }

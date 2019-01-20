@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    @include('card.card')
+                        @include('card.card')
 
                         <a href=""  data-toggle="modal" data-target="#createCard">+ add new card</a>
 

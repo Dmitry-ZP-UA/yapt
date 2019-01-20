@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Cards\Card;
 use App\Repositories\Interfaces\CardRepositoryInterface;
-use App\Repositories\Interfaces\TagRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class CardRepository extends BaseRepository implements CardRepositoryInterface
 {
@@ -18,4 +18,10 @@ class CardRepository extends BaseRepository implements CardRepositoryInterface
     {
         return $this->model->max('id');
     }
+
+    public function getCardsWithTags(): Collection
+    {
+        return $this->model->with('tags')->get();
+    }
+
 }
