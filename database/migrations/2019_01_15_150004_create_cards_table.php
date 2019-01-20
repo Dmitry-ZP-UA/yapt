@@ -16,8 +16,8 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('status_id');
+            $table->unsignedInteger('role_id')->nullable();
+            $table->unsignedInteger('status_id')->nullable();
             $table->text('description');
             $table->unsignedInteger('assigned_to');
             $table->foreign('assigned_to')->references('id')->on('users');

@@ -27,7 +27,6 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function create(array $attributes)
     {
-        //dd($attributes);
         $this->model->fill($attributes)->save();
     }
 
@@ -78,5 +77,17 @@ class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->where($key, '=', $value)->get();
     }
+
+    /**
+     * @param $key
+     * @param null $value
+     * @param $quantity
+     * @return Collection
+     */
+    public function searchByWithLimit($key, $value = null, $quantity): Collection
+    {
+        return $this->model->where($key, 'LIKE', '%'.$value.'%')->limit($quantity)->get();
+    }
+
 
 }

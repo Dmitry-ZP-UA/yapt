@@ -45,4 +45,11 @@ interface BaseRepositoryInterface
      * @return Collection
      */
     public function findBy($key, $value = null): Collection;
+
+    /**
+     * @param $key
+     * @param null $value
+     * @return Collection
+     */
+    public function searchByWithLimit($key, $value = null, $quantity): Collection;
 }

@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
+    protected $fillable = [
+      'title', 'description',
+      'assigned_to'
+    ];
     /**
      * @var string
      */
