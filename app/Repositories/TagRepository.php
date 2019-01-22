@@ -38,7 +38,7 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface
      * @param array $attributes
      * @param int $idCard
      */
-    public function createTags(array $attributes, int $idNote)
+    public function createTags(array $attributes, int $idCard)
     {
         $idTags = array();
 
@@ -62,7 +62,7 @@ class TagRepository extends BaseRepository implements TagRepositoryInterface
             array_push($idTags, $id);
         }
 
-        $this->attachingTagsInCard($idTags, $idNote);
+        $this->attachingTagsInCard($idTags, $idCard);
 
 
     }

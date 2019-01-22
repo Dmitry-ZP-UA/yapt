@@ -2,6 +2,7 @@
 
 namespace App\Models\Comments;
 
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -15,6 +16,14 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'comment'
+        'comment',
+        'user_id',
+        'created_at'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

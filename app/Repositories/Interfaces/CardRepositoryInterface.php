@@ -14,5 +14,5 @@ interface CardRepositoryInterface extends BaseRepositoryInterface
     /**
      * @return Collection
      */
-    public function getCardsWithTags(): Collection;
+    public function getCardsWithTagsAndComments(): Collection;
 }

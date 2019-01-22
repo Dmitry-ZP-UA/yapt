@@ -9,19 +9,29 @@ use Illuminate\Database\Eloquent\Collection;
 class CardRepository extends BaseRepository implements CardRepositoryInterface
 {
 
+    /**
+     * CardRepository constructor.
+     * @param Card $card
+     */
     public function __construct(Card $card)
     {
         parent::__construct($card);
     }
 
+    /**
+     * @return int
+     */
     public function getLastId(): int
     {
         return $this->model->max('id');
     }
 
-    public function getCardsWithTags(): Collection
+    /**
+     * @return Collection
+     */
+    public function getCardsWithTagsAndComments(): Collection
     {
-        return $this->model->with('tags')->get();
+        return $this->model->with('tags', 'comments')->get();
     }
 
 }

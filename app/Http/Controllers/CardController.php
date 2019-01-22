@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCardRequest;
+use App\Models\Comments\Comment;
+use App\Models\Users\User;
 use App\Repositories\Interfaces\CardRepositoryInterface;
 use App\Repositories\Interfaces\TagRepositoryInterface;
 
@@ -32,6 +34,7 @@ class CardController extends Controller
 
     /**
      * @param CreateCardRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function create(CreateCardRequest $request)
     {
@@ -39,6 +42,8 @@ class CardController extends Controller
 
         $this->tagRepository->createTags($request->only('tags'),
             $this->cardRepository->getLastId());
+
+        return back();
     }
 
     public function delete()
@@ -51,9 +56,9 @@ class CardController extends Controller
 
     }
 
-    public function show()
+    public function show(Comment $comment)
     {
-        $cards = $this->cardRepository->getCardsWithTags();
+        $cards = $this->cardRepository->getCardsWithTagsAndComments();
 
         return view('home', ['cards' => $cards]);
     }
