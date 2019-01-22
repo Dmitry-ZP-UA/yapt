@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCardRequest;
 use App\Models\Comments\Comment;
-use App\Models\Users\User;
 use App\Repositories\Interfaces\CardRepositoryInterface;
 use App\Repositories\Interfaces\TagRepositoryInterface;
+use Illuminate\Http\Request;
 
 
 class CardController extends Controller
@@ -46,9 +46,15 @@ class CardController extends Controller
         return back();
     }
 
-    public function delete()
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(Request $request)
     {
+        $this->cardRepository->delete((int)$request->id);
 
+        return back();
     }
 
     public function update()
@@ -56,6 +62,10 @@ class CardController extends Controller
 
     }
 
+    /**
+     * @param Comment $comment
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Comment $comment)
     {
         $cards = $this->cardRepository->getCardsWithTagsAndComments();

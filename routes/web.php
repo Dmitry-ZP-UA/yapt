@@ -10,6 +10,8 @@ Route::get('/', 'CardController@show')->name('home')->middleware('auth');;
 
 Route::post('create/card', 'CardController@create')->name('create.card');
 
+Route::post('delete/card', 'CardController@delete')->name('delete.card');
+
 Route::post('create/comment', 'CommentController@create')->name('create.comment');
 
 Route::get('tags/find', 'TagController@search');

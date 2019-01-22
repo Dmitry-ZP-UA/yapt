@@ -2,6 +2,8 @@
     <div class="alert alert-primary" role="alert" data-target="{{'#openModal'.$card->id}}" data-toggle="modal"
          style="cursor: pointer;">
         {{ $card->title }}
+
+
     </div>
 
 <!-- Modal -->
@@ -17,6 +19,15 @@
             </div>
 
             <div class="modal-body">
+
+                <form action="{{ route('delete.card') }}" method="post">
+                    @csrf
+                    <input name="id" hidden value="{{ $card->id }}">
+                    <button type="submit"  class="close" aria-label="Close">
+                        <span aria-hidden="true">delete this card&times;</span>
+                    </button>
+                </form>
+
                 <h7>В колонке
                     <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">В процессе</a>
                 </h7>
