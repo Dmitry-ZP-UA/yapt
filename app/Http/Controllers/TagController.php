@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRequest;
 use App\Repositories\Interfaces\TagRepositoryInterface;
-use Illuminate\Http\Request;
 
-
-class TagController
+class TagController extends Controller
 {
     const QUANTITY_TAGS_IN_LIST = 5;
 
@@ -25,10 +24,10 @@ class TagController
     }
 
     /**
-     * @param Request $request
+     * @param SearchRequest $request
      * @return array
      */
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
         $tags = $this->tagRepository->searchByWithLimit('tag',
             $request->q,

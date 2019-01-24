@@ -20,19 +20,17 @@ class Card extends Model
     protected $table = 'cards';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function status()
     {
-        return $this->hasOne(Status::class);
+        return $this->belongsTo(Status::class);
     }
 
     /**

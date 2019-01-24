@@ -1,5 +1,5 @@
-
-<div class="modal fade" id="createCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content ">
             <div class="modal-header">
@@ -19,30 +19,29 @@
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input type="text" class="form-control" name="description" placeholder="Description" >
+                        <input type="text" class="form-control" name="description" placeholder="Description">
                     </div>
                     <div class="form-group">
                         <label>Tags</label>
-                        <select class="form-control js-example-tokenizer" name="tags[]" multiple="multiple" style="width: 100%"></select>
+                        <select class="form-control js-tags-tokenizer" name="tags[]" multiple="multiple"
+                                style="width: 100%"></select>
                     </div>
                     <div class="form-group">
                         <label>Assigned to</label>
-                        <input class="form-control"  name="assigned_to" style="width: 100%">
+                        <input class="form-control" name="assigned_to" style="width: 100%">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
-
             </div>
         </div>
     </div>
 </div>
 
 <script>
-
-    $( ".js-example-tokenizer" ).select2 ({
+    $( ".js-tags-tokenizer" ).select2 ({
         tags : true ,
         tokenSeparators : [ ',' , ' ' ],
         ajax: {
@@ -61,29 +60,4 @@
             cache: true,
         }
     });
-
-
-
-$(".js-example-basic-hide-search").select2({
-        minimumResultsForSearch: Infinity,
-        ajax: {
-            url: 'tags/find/',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    q: $.trim(params.term)
-                };
-            },
-
-            processResults: function (data) {
-                return {
-                    results: data
-                };
-            },
-
-            cache: true,
-        }
-    });
-
-
 </script>

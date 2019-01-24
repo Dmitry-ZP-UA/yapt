@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CardUpdateRequest;
 use App\Http\Requests\CreateCardRequest;
-use App\Models\Comments\Comment;
 use App\Repositories\Interfaces\CardRepositoryInterface;
 use App\Repositories\Interfaces\TagRepositoryInterface;
 use Illuminate\Http\Request;
@@ -52,21 +52,34 @@ class CardController extends Controller
      */
     public function delete(Request $request)
     {
-        $this->cardRepository->delete((int)$request->id);
+        $this->cardRepository->delete((int)$request->card_id);
 
         return back();
     }
 
-    public function update()
+    /**
+     * @param CardUpdateRequest $request
+     */
+    public function update(CardUpdateRequest $request)
     {
+        if ($request->id) {
+            $this->cardRepository->update($request->id, [$request->name => $request->new_value]);
+        }
+
+        if ($request->role_id) {
+            $this->cardRepository->update($request->card_id, ['role_id' => $request->role_id]);
+        }
+
+        if ($request->status_id) {
+            $this->cardRepository->update($request->card_id, ['status_id' => $request->status_id]);
+        }
 
     }
 
     /**
-     * @param Comment $comment
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Comment $comment)
+    public function show()
     {
         $cards = $this->cardRepository->getCardsWithTagsAndComments();
 

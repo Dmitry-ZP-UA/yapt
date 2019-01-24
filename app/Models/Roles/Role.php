@@ -20,10 +20,9 @@ class Role extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function card()
     {
-        return $this->belongsTo(Card::class);
+        return $this->hasMany(Card::class);
     }
 }
